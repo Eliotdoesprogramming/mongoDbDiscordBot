@@ -17,8 +17,10 @@ bot.on('message', async(message) => {
     const args = message.content.split(' ');
     const command = args.shift().substring(1).toLowerCase();
 
-
-    if (command === 'makenote') {
+    if (command === 'help') {
+        await message.channel.send('This is a discord bot Eliot made to practice ' +
+            'using mongoDB \n the current commands are: ```!makenote \n!getnotes \n!clearnotes```');
+    } else if (command === 'makenote') {
         let note = args.join(' ');
         let result = await botCommands.makeNote(message, note);
         if (result) console.log('note taken');
