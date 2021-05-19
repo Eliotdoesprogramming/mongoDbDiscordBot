@@ -1,3 +1,5 @@
+const botCommands = require('./botCommands/botCommands')
+
 loadActions = () => {
 
     let actions = new Map();

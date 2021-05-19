@@ -1,4 +1,4 @@
 {
-    "url": "mongodb://localhost:27017'",
+    "url": "mongodb+srv://dbUser:Password123@cluster0.ancgd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     "dbName": "DiscordBot"
 }

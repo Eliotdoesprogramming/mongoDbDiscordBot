@@ -2,16 +2,12 @@ const Login = require('./botlogin.json');
 const Discord = require('discord.js');
 const bot = new Discord.Client()
 const prefix = '!';
-const botCommands = require('./botCommands/botCommands')
 const actions = require('./actions');
-
-
 
 
 bot.once('ready', () => {
     console.log('bot is online');
 });
-
 bot.on('message', async(message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.split(' ');
@@ -22,5 +18,4 @@ bot.on('message', async(message) => {
         console.log('cmd not found');
     }
 })
-console.log(actions);
 bot.login(Login.token);
