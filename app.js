@@ -2,7 +2,6 @@ const Login = require('./botlogin.json');
 const Discord = require('discord.js');
 const bot = new Discord.Client()
 const prefix = '!';
-const dbName = 'DiscordBot';
 const botCommands = require('./botCommands/botCommands')
 
 
