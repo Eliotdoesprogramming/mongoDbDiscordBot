@@ -22,7 +22,7 @@ bot.on('message', async(message) => {
     if (command.toLowerCase() === 'makenote') {
         let note = args.join(' ');
         let result = await botCommands.makeNote(message, note);
-        console.log(result);
+        if (result) console.log('note taken');
     }
 
 
