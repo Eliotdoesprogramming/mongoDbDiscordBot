@@ -4,6 +4,7 @@ const bot = new Discord.Client()
 const prefix = '!';
 const actions = require('./actions');
 
+require('dotenv').config()
 
 bot.once('ready', () => {
     console.log('bot is online');
@@ -18,4 +19,4 @@ bot.on('message', async(message) => {
         console.log('cmd not found');
     }
 })
-bot.login(Login.token);
+bot.login(process.env.BOT_LOGIN_TOKEN);

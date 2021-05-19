@@ -1,6 +1,9 @@
 const { MongoClient } = require('mongodb');
-const url = require('../dbinfo.json').url;
-const dbName = require('../dbinfo.json').dbName;
+require('dotenv').config()
+
+const url = process.env.DB_URL;
+console.log(url);
+const dbName = process.env.DB_DBNAME;
 const collection = 'Notes'
 const notesRepo = () => {
     const makeNote = (note) => {
