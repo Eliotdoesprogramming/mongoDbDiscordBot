@@ -3,6 +3,8 @@ const Discord = require('discord.js');
 const bot = new Discord.Client()
 const prefix = '!';
 const botCommands = require('./botCommands/botCommands')
+const actions = require('./actions');
+
 
 
 
@@ -20,36 +22,5 @@ bot.on('message', async(message) => {
         console.log('cmd not found');
     }
 })
-
-let actions = new Map();
-let help = {
-    use: async(message) => {
-        await message.channel.send('This is a discord bot Eliot made to practice ' +
-            'using mongoDB \n the current commands are: ```!makenote \n!getnotes \n!clearnotes```');
-    }
-}
-actions.set('help', help);
-let makeNote = {
-    use: async(message, args) => {
-        let note = args.join(' ');
-        let result = await botCommands.makeNote(message, note);
-        if (result) console.log('note taken');
-    }
-}
-actions.set('makenote', makeNote);
-let getNotes = {
-    use: async(message, args) => {
-        let result = await botCommands.getNotes(message);
-        console.log(result);
-    }
-}
-actions.set('getnotes', getNotes);
-
-let clearNotes = {
-    use: async(message, args) => {
-        let result = await botCommands.clearNotes(message);
-        console.log(result);
-    }
-}
-actions.set('clearnotes', clearNotes);
+console.log(actions);
 bot.login(Login.token);
