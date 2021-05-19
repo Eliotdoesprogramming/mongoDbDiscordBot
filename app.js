@@ -16,16 +16,18 @@ bot.once('ready', () => {
 bot.on('message', async(message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.split(' ');
-    let command = args.shift().substring(1);
+    const command = args.shift().substring(1).toLowerCase();
 
 
-    if (command.toLowerCase() === 'makenote') {
+    if (command === 'makenote') {
         let note = args.join(' ');
         let result = await botCommands.makeNote(message, note);
         if (result) console.log('note taken');
-    }
-    if (command.toLowerCase() === 'getnotes') {
+    } else if (command === 'getnotes') {
         let result = await botCommands.getNotes(message);
+        console.log(result);
+    } else if (command === 'clearnotes') {
+        let result = await botCommands.clearNotes(message);
         console.log(result);
     }
 

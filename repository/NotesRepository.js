@@ -37,6 +37,22 @@ const notesRepo = () => {
             }
         })
     }
-    return { makeNote, getNotes }
+    const clearNotes = (author) => {
+        return new Promise(async(resolve, reject) => {
+            const client = new MongoClient(url, { useUnifiedTopology: true });
+            try {
+                await client.connect();
+                const db = client.db(dbName);
+                let countDeleted = await db.collection(collection).deleteMany({ author: author });
+
+                resolve(countDeleted.deletedCount);
+
+            } catch (err) {
+                reject(err)
+            }
+
+        })
+    }
+    return { makeNote, getNotes, clearNotes }
 }
 module.exports = notesRepo();

@@ -1,5 +1,6 @@
 const cMakeNote = require('./makeNote');
 const cGetNotes = require('./getNotes');
+const cClearNotes = require('./clearNotes');
 
 function botCommands() {
 
@@ -10,6 +11,10 @@ function botCommands() {
     function getNotes(message) {
         return cGetNotes(message);
     }
-    return { makeNote, getNotes }
+
+    function clearNotes(message) {
+        return cClearNotes(message)
+    }
+    return { makeNote, getNotes, clearNotes }
 }
 module.exports = botCommands();
