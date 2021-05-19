@@ -10,7 +10,7 @@ const makeNote = (message, note) => {
         try {
             let result = await NotesRepo.makeNote({ note: note, author: message.author.username });
             let response;
-            response = await message.author.send('note taken!')
+            response = await message.channel.send('note taken!')
             resolve({ note: result.ops[0], author: message.author });
         } catch (exception) {
             reject(exception);
