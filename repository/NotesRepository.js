@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
-const url = 'mongodb://localhost:27017'
-const dbName = 'DiscordBot';
+const url = require('../dbinfo.json').url;
+const dbName = require('../dbinfo.json').dbName;
 const collection = 'Notes'
 const notesRepo = () => {
     const makeNote = (note) => {
