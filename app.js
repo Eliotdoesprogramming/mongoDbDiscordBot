@@ -24,6 +24,10 @@ bot.on('message', async(message) => {
         let result = await botCommands.makeNote(message, note);
         if (result) console.log('note taken');
     }
+    if (command.toLowerCase() === 'getnotes') {
+        let result = await botCommands.getNotes(message);
+        console.log(result);
+    }
 
 
 })

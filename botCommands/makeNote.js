@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const NotesRepo = require('../repository/NotesRepository')
     /**
      * 
-     * @param {Discord.Message} message Some XMLHttpRequest
+     * @param {Discord.Message} message a discord message
      * @param {string} note array of notes to be made
      */
 const makeNote = (message, note) => {

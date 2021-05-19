@@ -1,18 +1,15 @@
 const cMakeNote = require('./makeNote');
-const Discord = require('discord.js');
-
-
+const cGetNotes = require('./getNotes');
 
 function botCommands() {
-    /**
-     * 
-     * @param {Discord.Message} message 
-     * @param {string} note 
-     * @returns 
-     */
+
     function makeNote(message, note) {
         return cMakeNote(message, note);
     }
-    return { makeNote }
+
+    function getNotes(message) {
+        return cGetNotes(message);
+    }
+    return { makeNote, getNotes }
 }
 module.exports = botCommands();
