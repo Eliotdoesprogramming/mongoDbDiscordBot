@@ -10,7 +10,7 @@ loadActions = () => {
                 helpstring += `!${key}\n`
             })
             await message.channel.send('This is a discord bot Eliot made to practice ' +
-                'using mongoDB \n the current commands are: \`\`\`' + helpstring +
+                'using mongoDB \n the current commands are:\n \`\`\`' + helpstring +
                 '\`\`\`');
         }
     }

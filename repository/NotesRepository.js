@@ -2,7 +2,6 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config()
 
 const url = process.env.DB_URL;
-console.log(url);
 const dbName = process.env.DB_DBNAME;
 const collection = 'Notes'
 const notesRepo = () => {
@@ -26,13 +25,13 @@ const notesRepo = () => {
          * @param {string} author 
          * @returns {Promise<any[]>}
          */
-    const getNotes = (author) => {
+    const getNotes = (authorId) => {
         return new Promise(async(resolve, reject) => {
             const client = new MongoClient(url, { useUnifiedTopology: true });
             try {
                 await client.connect();
                 const db = client.db(dbName);
-                let results = await db.collection(collection).find({ author: author }).toArray();
+                let results = await db.collection(collection).find({ authorId: authorId }).toArray();
                 resolve(results);
                 client.close();
             } catch (err) {
@@ -40,13 +39,13 @@ const notesRepo = () => {
             }
         })
     }
-    const clearNotes = (author) => {
+    const clearNotes = (authorId) => {
         return new Promise(async(resolve, reject) => {
             const client = new MongoClient(url, { useUnifiedTopology: true });
             try {
                 await client.connect();
                 const db = client.db(dbName);
-                let countDeleted = await db.collection(collection).deleteMany({ author: author });
+                let countDeleted = await db.collection(collection).deleteMany({ authorId: authorId });
 
                 resolve(countDeleted.deletedCount);
 

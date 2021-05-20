@@ -8,7 +8,7 @@ const Discord = require('discord.js')
 function getNotes(message) {
     return new Promise(async(resolve, reject) => {
         try {
-            let notes = await NotesRepository.getNotes(message.author.username);
+            let notes = await NotesRepository.getNotes(message.author.id);
             notes.forEach(async(note) => {
                 await message.author.send(note.note);
             })

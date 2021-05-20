@@ -8,7 +8,7 @@ const NotesRepository = require("../repository/NotesRepository");
 const clearNotes = (message) => {
     return new Promise(async(resolve, reject) => {
         try {
-            notesDeleted = await NotesRepository.clearNotes(message.author.username);
+            notesDeleted = await NotesRepository.clearNotes(message.author.id);
             await message.author.send(notesDeleted + ' notes deleted');
             resolve(notesDeleted + ' deleted for user: ' + message.author.username);
         } catch (err) {

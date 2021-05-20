@@ -8,7 +8,7 @@ const NotesRepo = require('../repository/NotesRepository')
 const makeNote = (message, note) => {
     return new Promise(async(resolve, reject) => {
         try {
-            let result = await NotesRepo.makeNote({ note: note, author: message.author.username });
+            let result = await NotesRepo.makeNote({ note: note, author: message.author.username, authorId: message.author.id });
             let response;
             response = await message.channel.send('note taken!')
             resolve({ note: result.ops[0], author: message.author });
