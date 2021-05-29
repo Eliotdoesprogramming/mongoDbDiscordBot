@@ -38,6 +38,15 @@ loadActions = () => {
         }
     }
     actions.set('clearnotes', clearNotes);
+
+    let ffxivMarket = {
+        use: async(message,args) => {
+            let result = await botCommands.ffxivMarketLookup();
+            console.log(result)
+        }
+    }
+    actions.set('ff-market',ffxivMarket);
+    
     return actions;
 }
 module.exports = loadActions();
