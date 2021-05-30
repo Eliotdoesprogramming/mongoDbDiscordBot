@@ -1,4 +1,6 @@
 const botCommands = require('./botCommands/botCommands')
+const ffCommands = require('./botCommands/ffCommands')
+const ffactions = require('./ffactions')
 
 loadActions = () => {
 
@@ -39,13 +41,21 @@ loadActions = () => {
     }
     actions.set('clearnotes', clearNotes);
 
-    let ffxivMarket = {
+    let ffxiv = {
         use: async(message,args) => {
-            let result = await botCommands.ffxivMarketLookup();
-            console.log(result)
+            let ffcommand = args.shift()
+            console.log(ffactions)
+            if(ffactions.has(ffcommand)){
+               let result = await ffactions.get(ffcommand).use(message, ffcommand,args);
+               console.log(result)
+            } else {
+                await message.channel.send('ff command not found')
+                console.log('cmd not found')
+            }
+
         }
     }
-    actions.set('ff-market',ffxivMarket);
+    actions.set('ff',ffxiv);
     
     return actions;
 }

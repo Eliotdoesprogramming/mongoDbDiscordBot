@@ -1,7 +1,6 @@
 const cMakeNote = require('./makeNote');
 const cGetNotes = require('./getNotes');
 const cClearNotes = require('./clearNotes');
-const cFFXIVMarket = require('./ffxiv-market')
 
 function botCommands() {
 
@@ -15,9 +14,6 @@ function botCommands() {
 
     function clearNotes(message) {
         return cClearNotes(message)
-    }
-    function ffxivMarketLookup (message,args) {
-        return cFFXIVMarket(message,args)
     }
     return { makeNote, getNotes, clearNotes }
 }
