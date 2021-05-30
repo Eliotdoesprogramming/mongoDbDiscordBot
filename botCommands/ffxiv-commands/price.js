@@ -17,7 +17,7 @@ const price = (message,args) => {
         let itemId = args.shift();
         try{
             
-            itemId =parseInt(itemId)
+            itemId = parseInt(itemId)
             let server = default_server;
             if(Number.isNaN(itemId)){
                 server = itemId;
@@ -29,6 +29,7 @@ const price = (message,args) => {
                 }
             }
             itemName = await axios.get(`http://xivapi.com/Item/${itemId}`)
+
             itemName = itemName.data.Name
             let res = await axios.get(`http://universalis.app/api/${server}/${itemId}`)
 
@@ -36,7 +37,7 @@ const price = (message,args) => {
             let avgNQPrice = res.data.averagePriceNQ
             let avgHQPrice = res.data.averagePriceHQ
 
-            await message.channel.send(`<@${message.author.id}> here is the price for ${itemName}\n\n`+
+            await message.channel.send(`<@${message.author.id}> here is the price for ${itemName} (${itemId})\n\n`+
                                         `\`\`\`\n`+
                                         `\naverage recent price: ${Number(parseInt(avgPrice)).toLocaleString()}`+
                                         `\naverage recent NQ price: ${Number(parseInt(avgNQPrice)).toLocaleString()}`+
@@ -52,7 +53,7 @@ const price = (message,args) => {
         }
         catch (err){
             message.channel.send(`couldnt find any prices for: ${itemName?itemName:'item # '+itemId}`)
-            reject(err)
+            reject(err.message)
         }
     })
 } 

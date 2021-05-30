@@ -15,16 +15,16 @@ const UserItemRepo = () => {
                     resolve(result);
                     client.close();
                 } catch (err) {
-                    reject(err);
+                    reject(err.message);
                 }
 
             })
         }
-        /**
-         * 
-         * @param {string} author 
-         * @returns {Promise<any[]>}
-         */
+    /**
+     * 
+     * @param {string} author 
+     * @returns {Promise<any[]>}
+     */
     const getItems = (authorId) => {
         return new Promise(async(resolve, reject) => {
             const client = new MongoClient(url, { useUnifiedTopology: true });
@@ -35,7 +35,7 @@ const UserItemRepo = () => {
                 resolve(results);
                 client.close();
             } catch (err) {
-                reject(err)
+                reject(err.message)
             }
         })
     }
@@ -45,12 +45,12 @@ const UserItemRepo = () => {
             try {
                 await client.connect();
                 const db = client.db(dbName);
-                let countDeleted = await db.collection(collection).deleteMany({ authorId: authorId,itemId:itemid });
-
+                let countDeleted = await db.collection(collection).deleteMany({ userId: authorId,itemId:itemId });
+                
                 resolve(countDeleted.deletedCount);
 
             } catch (err) {
-                reject(err)
+                reject(err.message)
             }
 
         })
