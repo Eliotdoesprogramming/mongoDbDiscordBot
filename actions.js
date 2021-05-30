@@ -1,6 +1,6 @@
 const botCommands = require('./botCommands/botCommands')
-const ffCommands = require('./botCommands/ffCommands')
-const ffactions = require('./ffactions')
+const ffCommands = require('./botCommands/ffxiv-commands/ffCommands')
+const ffactions = require('./botCommands/ffxiv-commands/ffactions')
 
 loadActions = () => {
 

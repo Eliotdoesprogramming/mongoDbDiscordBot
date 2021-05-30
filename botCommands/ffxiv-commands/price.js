@@ -3,6 +3,7 @@ const default_server = 'Jenova'
 
 const axios = require('axios');
 const Discord = require('discord.js')
+
 /**
  * 
  * @param {Discord.Message} message 
@@ -20,7 +21,7 @@ const price = (message,args) => {
                 server = itemId;
                 itemId=args.shift();
                 if(Number.isNaN(ItemId)){
-                    await message.channel.send('invalid syntax, please enter !ff price [itemId]')
+                    await message.channel.send('invalid syntax, please enter !ff price [server(optional)][itemId]')
                     reject('no ItemId given ',server,itemId)
                     return;
                 }
@@ -48,6 +49,7 @@ const price = (message,args) => {
 
         }
         catch (err){
+            message.channel.send(`couldnt find any prices...`)
             reject(err)
         }
     })
