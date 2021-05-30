@@ -13,8 +13,10 @@ const Discord = require('discord.js')
  */
 const price = (message,args) => {
     return new Promise(async(resolve,reject)=> {
+        let itemName
+        let itemId = args.shift();
         try{
-            let itemId = args.shift();
+            
             itemId =parseInt(itemId)
             let server = default_server;
             if(Number.isNaN(itemId)){
@@ -26,10 +28,10 @@ const price = (message,args) => {
                     return;
                 }
             }
-            
-            let res = await axios.get(`http://universalis.app/api/${server}/${itemId}`)
-            let itemName = await axios.get(`http://xivapi.com/Item/${itemId}`)
+            itemName = await axios.get(`http://xivapi.com/Item/${itemId}`)
             itemName = itemName.data.Name
+            let res = await axios.get(`http://universalis.app/api/${server}/${itemId}`)
+
             let avgPrice = res.data.averagePrice
             let avgNQPrice = res.data.averagePriceNQ
             let avgHQPrice = res.data.averagePriceHQ
@@ -49,7 +51,7 @@ const price = (message,args) => {
 
         }
         catch (err){
-            message.channel.send(`couldnt find any prices...`)
+            message.channel.send(`couldnt find any prices for: ${itemName?itemName:'item # '+itemId}`)
             reject(err)
         }
     })
