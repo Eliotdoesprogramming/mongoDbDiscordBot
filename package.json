@@ -6,7 +6,8 @@
     "cjs": "^0.0.11",
     "discord.js": "^12.5.3",
     "dotenv": "^9.0.2",
-    "mongodb": "^3.6.7"
+    "mongodb": "^3.6.7",
+    "ws": ">=7.4.6"
   },
   "name": "mongodbdiscordbot",
   "version": "1.0.0",
