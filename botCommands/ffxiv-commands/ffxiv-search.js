@@ -7,7 +7,7 @@ const Discord = require('discord.js')
  * 
  * @returns {Promise<String>}
  */
-const ffSearch =(message,command,args)=>{
+const ffSearch =(message,args)=>{
     return new Promise(async(resolve,reject)=> {
         console.log(args);
         let item = args.join(' ');

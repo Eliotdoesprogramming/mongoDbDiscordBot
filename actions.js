@@ -44,9 +44,8 @@ loadActions = () => {
     let ffxiv = {
         use: async(message,args) => {
             let ffcommand = args.shift()
-            console.log(ffactions)
             if(ffactions.has(ffcommand)){
-               let result = await ffactions.get(ffcommand).use(message, ffcommand,args);
+               let result = await ffactions.get(ffcommand).use(message, args);
                console.log(result)
             } else {
                 await message.channel.send('ff command not found')

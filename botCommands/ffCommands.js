@@ -1,8 +1,12 @@
- const cffSearch = require('./ffxiv-commands/ffxiv-search')
+const cffSearch = require('./ffxiv-commands/ffxiv-search')
+const cffPrice = require('./ffxiv-commands/price')
 function ffCommands() {
-    function search(message,command,args){
-        return cffSearch(message,command,args)
+    function search(message,args){
+        return cffSearch(message,args)
     }
-    return {search}
+    function price(message,args){
+        return cffPrice(message,args)
+    }
+    return {search,price}
 }
 module.exports = ffCommands()
