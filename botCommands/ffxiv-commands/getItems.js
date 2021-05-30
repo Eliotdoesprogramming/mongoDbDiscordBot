@@ -15,8 +15,8 @@ const getItems = (message,args) => {
             items.forEach(async item => await price(message,[item.itemId]))
             resolve(`called price function on ${items.length} items`)
         } catch (error){
-            console.log(error.message)
-            reject(error)
+
+            reject(error.message)
         }
         
         

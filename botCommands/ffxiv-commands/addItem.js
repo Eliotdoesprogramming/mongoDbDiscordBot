@@ -9,12 +9,18 @@ const axios = require('axios')
 
 const addItem = (message,args) => {
     return new Promise(async(resolve,reject)=> {
-        let itemId = args.shift()
-        let itemName = await axios.get(`http://xivapi.com/Item/${itemId}`)
-        itemName=itemName.data.Name
-        let result = await UserItemRepo.addItem(message.author.id,message.author.username,itemId,itemName)
-        await message.channel.send(`<@${message.author.id}> registered item: [${itemId}] ${itemName}`)
-        resolve(result.ops[0])
+
+        try{
+            let itemId = args.shift()
+            let itemName = await axios.get(`http://xivapi.com/Item/${itemId}`)
+            itemName=itemName.data.Name
+            let result = await UserItemRepo.addItem(message.author.id,message.author.username,itemId,itemName)
+            await message.channel.send(`<@${message.author.id}> registered item: [${itemId}] ${itemName}`)
+            resolve(result.ops[0])
+        } catch(error){
+            reject(error.message)
+        }
+
     })
 }
 module.exports = addItem

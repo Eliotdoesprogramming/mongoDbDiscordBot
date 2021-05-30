@@ -12,7 +12,7 @@ const clearNotes = (message) => {
             await message.author.send(notesDeleted + ' notes deleted');
             resolve(notesDeleted + ' deleted for user: ' + message.author.username);
         } catch (err) {
-            reject(err)
+            reject(err.message)
         }
     })
 }
