@@ -1,4 +1,6 @@
 const botCommands = require('./botCommands/botCommands')
+const ffCommands = require('./botCommands/ffxiv-commands/ffCommands')
+const ffactions = require('./botCommands/ffxiv-commands/ffactions')
 
 loadActions = () => {
 
@@ -38,6 +40,22 @@ loadActions = () => {
         }
     }
     actions.set('clearnotes', clearNotes);
+
+    let ffxiv = {
+        use: async(message,args) => {
+            let ffcommand = args.shift()
+            if(ffactions.has(ffcommand)){
+               let result = await ffactions.get(ffcommand).use(message, args);
+               console.log(result)
+            } else {
+                await message.channel.send('ff command not found')
+                console.log('cmd not found')
+            }
+
+        }
+    }
+    actions.set('ff',ffxiv);
+    
     return actions;
 }
 module.exports = loadActions();
