@@ -8,10 +8,10 @@ const axios = require('axios')
  */
 const remove = (message,args) => {
 return new Promise(async(resolve,reject)=> {
-    
+    let result = []
     try{
-        let result = []
-        args.forEach( async idToRemove => {
+
+        await args.forEach( async idToRemove => {
             if(!Number.isNaN(parseInt(idToRemove))){
                 //TODO: read result and then decide what message to send
                 let res = await UserItemRepo.removeItem(message.author.id,idToRemove)

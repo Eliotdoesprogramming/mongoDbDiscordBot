@@ -12,8 +12,9 @@ const UserItemRepo = () => {
                     await client.connect();
                     const db = client.db(dbName);
                     let result = await db.collection(collection).insertOne({userId:authorId,username:username, itemId:itemId,itemName:itemName});
+                    await client.close();
                     resolve(result);
-                    client.close();
+
                 } catch (err) {
                     reject(err);
                 }
