@@ -15,7 +15,7 @@ const UserItemRepo = () => {
                     resolve(result);
                     client.close();
                 } catch (err) {
-                    reject(err.message);
+                    reject(err);
                 }
 
             })
@@ -48,7 +48,7 @@ const UserItemRepo = () => {
                 let countDeleted = await db.collection(collection).deleteMany({ userId: authorId,itemId:itemId });
                 
                 resolve(countDeleted.deletedCount);
-
+                client.close();
             } catch (err) {
                 reject(err.message)
             }
