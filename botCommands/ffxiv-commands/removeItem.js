@@ -14,11 +14,17 @@ return new Promise(async(resolve,reject)=> {
         args.forEach( async idToRemove => {
             if(!Number.isNaN(parseInt(idToRemove))){
                 //TODO: read result and then decide what message to send
-                let res = await UserItemRepo.removeItem(message.author.id,idToRemove).catch(error => reject(error))
-                result.push(res) 
+                let res = await UserItemRepo.removeItem(message.author.id,idToRemove)
+                if(res>0) result.push(idToRemove)
             }
-            else await message.channel.send(idToRemove+' is invalid, please enter a number')
+            else{
+                await message.channel.send(idToRemove+' is invalid, please enter a number')
+                return;
+            } 
         })
+        let removeString =""
+        result.forEach(id => removeString += `\n${id}`)
+        if(result.length>0) await message.channel.send('removed the following items:\n\`\`\`'+removeString+'\`\`\`');
         resolve(result)
     } catch (error){
 
