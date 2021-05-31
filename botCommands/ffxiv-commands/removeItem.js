@@ -8,9 +8,8 @@ const axios = require('axios')
  */
 const remove = (message,args) => {
 return new Promise(async(resolve,reject)=> {
-    
+    let result = []
     try{
-        let result = []
         for(let i = 0; i <args.length; i ++){
             let idToRemove = args[i];
             if(!Number.isNaN(parseInt(idToRemove))){
@@ -31,8 +30,6 @@ return new Promise(async(resolve,reject)=> {
 
         reject(error.message)
     }
-    
-    
 })
 }
 
