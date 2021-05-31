@@ -5,6 +5,7 @@ const actions = require('./actions');
 
 require('dotenv').config()
 
+
 bot.once('ready', () => {
     console.log('bot is online');
 });
