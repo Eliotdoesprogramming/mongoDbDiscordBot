@@ -48,6 +48,13 @@ loadFFActions = () => {
     }
     ffActions.set('remove', removeItem)
 
+    let lucky = {
+        use:async(message,args)=>{
+            let result = await ffCommands.lucky(message,args)
+            return result
+        },
+        description:"!ff lucky [server(optional)] [item name (string/text)]\n\tUse this command to search for the price of the first item found when searching the ffxiv api"
+    }
     let help = {
         use: async(message) => {
             let helpstring = '';
@@ -59,6 +66,8 @@ loadFFActions = () => {
         description:''
     }
     ffActions.set('help',help)
+
+    
     return ffActions
 }
 module.exports = loadFFActions()
