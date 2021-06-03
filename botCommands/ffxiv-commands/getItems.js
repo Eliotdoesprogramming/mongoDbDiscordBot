@@ -9,13 +9,21 @@ const price = require('./price')
      */
 const getItems = (message,args) => {
     return new Promise(async(resolve,reject)=> {
-        
+        let server;
+        if(args.length > 0 && args[0].match('\w+')){
+            server = args[0];
+        }
         try{
-            let items = await UserItemRepo.getItems(message.author.id)
-            items.forEach(async item => await price(message,[item.itemId]))
+            let items = await UserItemRepo.getItems(message.author.id);
+            for(item of items){
+                if(server){
+                    await price(message,[server,item.itemId]);
+                }
+                else
+                    await price(message,[item.itemId]);
+            }
             resolve(`called price function on ${items.length} items`)
         } catch (error){
-
             reject(error.message)
         }
         
