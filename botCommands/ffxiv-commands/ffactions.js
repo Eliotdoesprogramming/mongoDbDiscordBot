@@ -17,7 +17,7 @@ loadFFActions = () => {
             let result = await ffCommands.price(message,args)
             return result
         },
-        description: '!ff price [item id (number)] \n\t item id\'s can be gathered by using the !ff search command' 
+        description: '!ff price [server(optional)] [item id (number)] \n\t item id\'s can be gathered by using the !ff search command' 
     
     }
     ffActions.set('price',marketPrice)
@@ -36,7 +36,7 @@ loadFFActions = () => {
             let result = await ffCommands.getItems(message,args)
             return result
         },
-        description:'!ff getitems \n\t use this command to get the prices on all of your registered items'
+        description:'!ff getitems [server(optional)] \n\t use this command to get the prices on all of your registered items'
     }
     ffActions.set('getitems', getItems)
     let removeItem = {
@@ -44,7 +44,7 @@ loadFFActions = () => {
             let result = await ffCommands.removeItem(message,args)
             return result
         },
-        description:'!ff remove [item id(number)]\n\t use this command to remove a certain item from your registered items. note this will only work with the item id\'s at this time.'
+        description:'!ff remove [item id(number)]\n\t use this command to remove a certain item from your registered items. note this will only work with the item id\'s at this time.\n\tNote: multiple item id\'s can be used here to remove multiple items'
     }
     ffActions.set('remove', removeItem)
 
