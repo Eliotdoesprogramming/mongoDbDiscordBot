@@ -1,4 +1,5 @@
 const ffCommands = require("./ffCommands")
+
 /**
  * @returns {Map}
  */
@@ -55,6 +56,7 @@ loadFFActions = () => {
         },
         description:"!ff lucky [server(optional)] [item name (string/text)]\n\tUse this command to search for the price of the first item found when searching the ffxiv api"
     }
+    ffActions.set('lucky',lucky)
     let help = {
         use: async(message) => {
             let helpstring = '';
