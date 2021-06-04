@@ -14,7 +14,7 @@ const ffLucky =(message,args)=>{
         
         /// search for the item
         try{
-            let response = await axios.get(`http://xivapi.com/search?string=${item}&private_key=${pkey}`)
+            let response = await axios.get(`http://xivapi.com/search?indexes=item&string=${item}&private_key=${pkey}`)
             let items = response.data.Results
             item=items.filter( (item) => item.UrlType==='Item')[0];
             if(!item){
