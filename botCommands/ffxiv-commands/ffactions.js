@@ -1,4 +1,5 @@
 const ffCommands = require("./ffCommands")
+
 /**
  * @returns {Map}
  */
@@ -17,7 +18,7 @@ loadFFActions = () => {
             let result = await ffCommands.price(message,args)
             return result
         },
-        description: '!ff price [item id (number)] \n\t item id\'s can be gathered by using the !ff search command' 
+        description: '!ff price [server(optional)] [item id (number)] \n\t item id\'s can be gathered by using the !ff search command' 
     
     }
     ffActions.set('price',marketPrice)
@@ -36,7 +37,7 @@ loadFFActions = () => {
             let result = await ffCommands.getItems(message,args)
             return result
         },
-        description:'!ff getitems \n\t use this command to get the prices on all of your registered items'
+        description:'!ff getitems [server(optional)] \n\t use this command to get the prices on all of your registered items'
     }
     ffActions.set('getitems', getItems)
     let removeItem = {
@@ -44,10 +45,18 @@ loadFFActions = () => {
             let result = await ffCommands.removeItem(message,args)
             return result
         },
-        description:'!ff remove [item id(number)]\n\t use this command to remove a certain item from your registered items. note this will only work with the item id\'s at this time.'
+        description:'!ff remove [item id(number)]\n\t use this command to remove a certain item from your registered items. note this will only work with the item id\'s at this time.\n\tNote: multiple item id\'s can be used here to remove multiple items'
     }
     ffActions.set('remove', removeItem)
 
+    let lucky = {
+        use:async(message,args)=>{
+            let result = await ffCommands.lucky(message,args)
+            return result
+        },
+        description:"!ff lucky [server(optional)] [item name (string/text)]\n\tUse this command to search for the price of the first item found when searching the ffxiv api"
+    }
+    ffActions.set('lucky',lucky)
     let help = {
         use: async(message) => {
             let helpstring = '';
@@ -59,6 +68,8 @@ loadFFActions = () => {
         description:''
     }
     ffActions.set('help',help)
+
+    
     return ffActions
 }
 module.exports = loadFFActions()

@@ -15,7 +15,7 @@ const ffSearch =(message,args)=>{
         
 
         try{
-            let response = await axios.get(`http://xivapi.com/search?string=${item}&private_key=${pkey}`)
+            let response = await axios.get(`http://xivapi.com/search?indexes=item&string=${item}&private_key=${pkey}`)
             let items = response.data.Results
             let initItemSize = items.length
             items=items.filter( (item) => item.UrlType==='Item')

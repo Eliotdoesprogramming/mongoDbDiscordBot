@@ -43,7 +43,7 @@ loadActions = () => {
 
     let ffxiv = {
         use: async(message,args) => {
-            let ffcommand = args.shift()
+            let ffcommand = args.shift().toLowerCase();
             if(ffactions.has(ffcommand)){
                let result = await ffactions.get(ffcommand).use(message, args);
                console.log(result)

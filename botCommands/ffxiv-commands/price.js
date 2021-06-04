@@ -14,15 +14,15 @@ const Discord = require('discord.js')
 const price = (message,args) => {
     return new Promise(async(resolve,reject)=> {
         let itemName
-        let itemId = args.shift();
+        let initarg = args.shift();
         try{
             
-            itemId = parseInt(itemId)
+            var itemId = parseInt(initarg)
             let server = default_server;
             if(Number.isNaN(itemId)){
-                server = itemId;
+                server = initarg;
                 itemId=args.shift();
-                if(Number.isNaN(ItemId)){
+                if(Number.isNaN(parseInt(itemId))){
                     await message.channel.send('invalid syntax, please enter !ff price [server(optional)][itemId]')
                     reject('no ItemId given ',server,itemId)
                     return;
