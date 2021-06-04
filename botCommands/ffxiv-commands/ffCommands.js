@@ -3,6 +3,7 @@ const cffPrice = require('./price')
 const ffaddItem = require('./addItem')
 const ffgetItems = require('./getItems')
 const ffremoveItem = require('./removeItem')
+const fflucky = require('./lucky')
 function ffCommands() {
     function search(message,args){
         return cffSearch(message,args)
@@ -19,6 +20,9 @@ function ffCommands() {
     function removeItem (message,args){
         return ffremoveItem(message,args)
     }
-    return {search,price,addItem,getItems,removeItem}
+    function lucky (message,args){
+        return fflucky(message,args)
+    }
+    return {search,price,addItem,getItems,removeItem,lucky}
 }
 module.exports = ffCommands()
